@@ -12,8 +12,14 @@ using System.Drawing;
 
 namespace EXAMENPRACTICA
 {
-    public partial class tipo : System.Web.UI.Page
+    public partial class Usuario : System.Web.UI.Page
     {
+        // Declaración de la variable datagrid
+        protected GridView datagrid;
+
+        // Declaración de la variable tnombre
+        protected TextBox tnombre;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,7 +39,6 @@ namespace EXAMENPRACTICA
             sb.Append("')};");
             sb.Append("</script>");
             ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
-
         }
 
         protected void LlenarGrid()
@@ -41,7 +46,7 @@ namespace EXAMENPRACTICA
             string constr = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT *  FROM tipo"))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Usuarios"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
@@ -57,67 +62,80 @@ namespace EXAMENPRACTICA
                 }
             }
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-
-            int resultado = Clases.tipo.Agregar(tdescripcion.Text);
+            int resultado = Clases.Usuario.AGREGAR_USUARIO(tnombre.Text);
 
             if (resultado > 0)
             {
-                alertas("Tipo ingresado ha sido ingresado con exito");
-                tdescripcion.Text = string.Empty;
+                alertas("Usuario añadido ha sido ingresado con exito");
+                tnombre.Text = string.Empty;
                 LlenarGrid();
             }
             else
             {
-                alertas("Error al ingresar tipo");
-
+                alertas("Error al ingresar Usuario");
             }
-
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            int resultado = Clases.tipo.Borrar(int.Parse(tcodigo.Text));
+            int resultado = Clases.Usuario.Borrar(int.Parse(tnombre.Text));
 
-            if (resultado > 0)
+            if (int.TryParse(tnombre.Text, out int UsuarioId))
             {
-                alertas("Tipo ingresado ha sido ingresado con exito");
-                tdescripcion.Text = string.Empty;
-                LlenarGrid();
+                if (resultado > 0)
+                {
+                    alertas("Tipo eliminado con éxito");
+                    tnombre.Text = string.Empty;
+                    LlenarGrid();
+                }
+                else
+                {
+                    alertas("Error al eliminar tipo");
+                }
             }
             else
             {
-                alertas("Error al ingresar tipo");
-
+                alertas("Ingrese un valor numérico válido para el código");
             }
-
-
         }
 
         protected void Bconsulta_Click(object sender, EventArgs e)
         {
-            int codigo = int.Parse(tcodigo.Text);
-            string constr = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
+            if (int.TryParse(tnombre.Text, out int Nombre))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM TIPO WHERE ID ='" + codigo + "'"))
-
-
-                using (SqlDataAdapter sda = new SqlDataAdapter())
+                string constr = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
                 {
-                    cmd.Connection = con;
-                    sda.SelectCommand = cmd;
-                    using (DataTable dt = new DataTable())
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Usuarios WHERE UsuarioId = @Nombre"))
                     {
-                        sda.Fill(dt);
-                        datagrid.DataSource = dt;
-                        datagrid.DataBind();  // actualizar el grid view
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        using (SqlDataAdapter sda = new SqlDataAdapter())
+                        {
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            using (DataTable dt = new DataTable())
+                            {
+                                sda.Fill(dt);
+                                datagrid.DataSource = dt;
+                                datagrid.DataBind();  // actualizar el grid view
+                            }
+                        }
                     }
                 }
             }
+            else
+            {
+                alertas("Ingrese un valor numérico válido para el código");
+            }
         }
 
+        protected void datagrid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Código para el evento SelectedIndexChanged del datagrid
+        }
     }
 }
+

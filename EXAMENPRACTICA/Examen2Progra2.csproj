@@ -67,30 +67,76 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Articulos.aspx" />
+    <Content Include="BD1\Examen2Progra2.sql" />
     <Content Include="css\estilo.css" />
     <Content Include="css\GridviewDiseno.css" />
+    <Content Include="Equipos.aspx" />
+    <Content Include="DetallesReparacion.aspx" />
+    <Content Include="Asignaciones.aspx" />
+    <Content Include="Tecnicos.aspx" />
+    <Content Include="Reparaciones.aspx" />
+    <Content Include="Usuarios.aspx" />
     <Content Include="principal.aspx" />
-    <Content Include="tipo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articulos.aspx.cs">
-      <DependentUpon>Articulos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Clases\Asignaciones.cs" />
+    <Compile Include="Clases\Tecnicos.cs" />
+    <Compile Include="Clases\DetallesReparacion.cs" />
+    <Compile Include="Clases\Reparaciones.cs" />
+    <Compile Include="Clases\Equipo.cs" />
+    <Compile Include="Clases\Usuario.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Articulos.aspx.designer.cs">
-      <DependentUpon>Articulos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\DBConn.cs" />
-    <Compile Include="Clases\tipo.cs" />
     <Compile Include="menu.Master.cs">
       <DependentUpon>menu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="menu.Master.designer.cs">
       <DependentUpon>menu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Equipos.aspx.cs">
+      <DependentUpon>Equipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Equipos.aspx.designer.cs">
+      <DependentUpon>Equipos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesReparacion.aspx.cs">
+      <DependentUpon>DetallesReparacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetallesReparacion.aspx.designer.cs">
+      <DependentUpon>DetallesReparacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asignaciones.aspx.cs">
+      <DependentUpon>Asignaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asignaciones.aspx.designer.cs">
+      <DependentUpon>Asignaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tecnicos.aspx.cs">
+      <DependentUpon>Tecnicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tecnicos.aspx.designer.cs">
+      <DependentUpon>Tecnicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reparaciones.aspx.cs">
+      <DependentUpon>Reparaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reparaciones.aspx.designer.cs">
+      <DependentUpon>Reparaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="principal.aspx.cs">
       <DependentUpon>principal.aspx</DependentUpon>
@@ -100,25 +146,18 @@
       <DependentUpon>principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tipo.aspx.cs">
-      <DependentUpon>tipo.aspx</DependentUpon>
+    <Compile Include="Usuarios.Master.cs">
+      <DependentUpon>Usuarios.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="tipo.aspx.designer.cs">
-      <DependentUpon>tipo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="tipos.Master.cs">
-      <DependentUpon>tipos.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="tipos.Master.designer.cs">
-      <DependentUpon>tipos.Master</DependentUpon>
+    <Compile Include="Usuarios.Master.designer.cs">
+      <DependentUpon>Usuarios.Master</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="menu.Master" />
     <None Include="packages.config" />
-    <Content Include="tipos.Master" />
+    <Content Include="Usuarios.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

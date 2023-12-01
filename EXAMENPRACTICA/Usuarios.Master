@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="tipos.master.cs" Inherits="EXAMENPRACTICA.tipos" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Usuarios.master.cs" Inherits="EXAMENPRACTICA.Usuarios" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            tipos
+            Usuarios
         </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

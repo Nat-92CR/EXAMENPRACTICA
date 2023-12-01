@@ -11,7 +11,7 @@ namespace EXAMENPRACTICA
 {
 
 
-    public partial class menu
+    public partial class Usuarios
     {
 
         /// <summary>
